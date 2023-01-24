@@ -1,0 +1,24 @@
+{
+  "name": "rest-api",
+  "version": "1.0.0",
+  "description": "REST API para Login",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eulerbolivar/Login-com-Node.git"
+  },
+  "keywords": [
+    "node",
+    "login",
+    "jwt"
+  ],
+  "author": "Euler Breno de Oliveira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eulerbolivar/Login-com-Node/issues"
+  },
+  "homepage": "https://github.com/eulerbolivar/Login-com-Node#readme"
+}
