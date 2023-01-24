@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/eulerbolivar/Login-com-Node/issues"
   },
-  "homepage": "https://github.com/eulerbolivar/Login-com-Node#readme"
+  "homepage": "https://github.com/eulerbolivar/Login-com-Node#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
