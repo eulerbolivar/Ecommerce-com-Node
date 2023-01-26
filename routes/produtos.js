@@ -4,14 +4,14 @@ const router = express.Router()
 // RETORNA OS DADOS DE TODOS OS PRODUTOS
 router.get('/', (req, res, next) => {
     res.status(200).send({
-        mensagem: 'Usando o GET dentro da rota de produtos'
+        mensagem: 'Retorna um produto'
     })
 })
 
 // INSERE O DADO DE UM PRODUTO
 router.post('/', (req, res, next) => {
     res.status(201).send({
-        mensagem: 'Usando o POST dentro da rota de produtos'
+        mensagem: 'Insere um produto'
     })
 })
 
@@ -36,14 +36,14 @@ router.get('/:id_produto', (req, res, next) => {
 // ALTERA UM PRODUTO
 router.patch('/', (req, res, next) => {
     res.status(201).send({
-        mensagem: 'Usando o PATCH dentro da rota de produtos'
+        mensagem: 'Altera o produto'
     })
 })
 
 // DELETA UM PRODUTO
 router.delete('/', (req, res, next) => {
     res.status(201).send({
-        mensagem: 'Usando o DELETE dentro da rota de produtos'
+        mensagem: 'Exclui o produto'
     })
 })
 
