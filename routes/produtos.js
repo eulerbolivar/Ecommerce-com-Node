@@ -1,5 +1,6 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
+const mysql = require('../mysql').pool;
 
 // RETORNA OS DADOS DE TODOS OS PRODUTOS
 router.get('/', (req, res, next) => {
@@ -15,6 +16,8 @@ router.post('/', (req, res, next) => {
         nome: req.body.nome,
         preco: req.body.preco
     }
+
+    mysql.getConnection()
 
     res.status(201).send({
         mensagem: 'Insere um produto',
