@@ -11,13 +11,22 @@ router.get('/', (req, res, next) => {
 
 // INSERE O DADO DE UM PRODUTO
 router.post('/', (req, res, next) => {
+    mysql.getConnection((error, conn) => {
+        conn.query(
+            'INSERT INTO produtos (nome, preco) VALUES (?, ?)',
+            [req.body.nome, req.body.preco],
+            (error, resultado, field) => {
+                conn.release(); // NECESSÁRIO PARA LIBERAR AS CONEXÕES
 
-    const produto = {
-        nome: req.body.nome,
-        preco: req.body.preco
-    }
-
-    mysql.getConnection()
+                if (error) {
+                    return res.status(500).send({
+                        error: error,
+                        response: null
+                    });
+                }
+            }
+        )
+    })
 
     res.status(201).send({
         mensagem: 'Insere um produto',
