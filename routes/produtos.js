@@ -54,16 +54,31 @@ router.get('/:id_produto', (req, res, next) => {
 
 // ALTERA UM PRODUTO
 router.patch('/', (req, res, next) => {
-    res.status(201).send({
-        mensagem: 'Altera o produto'
-    })
-})
+    mysql.getConnection((error, conn) => {
+        if (error) { return res.status(500).send({error: error})}
+        conn.query(
+            `UPDATE produtos
+                SET nome       = ?,
+                    preco      = ?
+              WHERE id_produto = ?`,
+            [req.body.nome, 
+             req.body.preco,
+             req.body.id_produto
+            ],
+            (error, resultado, field) => {
+                conn.release(); // NECESSÁRIO PARA LIBERAR AS CONEXÕES
+                if (error) { return res.status(500).send({error: error})}
+
+                res.status(202).send({
+                    mensagem: 'Produto alterado com sucesso!',
+                });
+            }
+        )
+    });
+});
 
 // DELETA UM PRODUTO
 router.delete('/', (req, res, next) => {
-    res.status(201).send({
-        mensagem: 'Exclui o produto'
-    })
-})
+
 
 module.exports = router
