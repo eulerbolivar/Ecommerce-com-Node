@@ -20,7 +20,7 @@ app.use((req, res, next) => {
         return res.status(200).send({})
      }
 
-     next(d)
+     next()
 })
 
 app.use('/produtos', rotaProdutos)
