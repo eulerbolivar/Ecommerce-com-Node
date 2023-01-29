@@ -79,6 +79,20 @@ router.patch('/', (req, res, next) => {
 
 // DELETA UM PRODUTO
 router.delete('/', (req, res, next) => {
+    mysql.getConnection((error, conn) => {
+        if (error) { return res.status(500).send({error: error})}
+        conn.query(
+                `DELETE FROM produtos WHERE id_produto = ?`, [req.body.id_produto],
+            (error, resultado, field) => {
+                conn.release(); // NECESSÁRIO PARA LIBERAR AS CONEXÕES
+                if (error) { return res.status(500).send({error: error})}
 
+                res.status(202).send({
+                    mensagem: 'Produto removido com sucesso!',
+                });
+            }
+        )
+    });
+});
 
 module.exports = router
